@@ -29,9 +29,40 @@ void draw_circle(int xc, int yc, int radius)
 	draw_polygon(x, y, 18, true);
 }
 
+void draw_character(int x, int y, int s, char c)
+{
+	int x1[] = {2, 5, 5, 2, 8};
+	int y1[] = {2, 0, 9, 9, 9};
+
+	int xa[10], ya[10], n;
+	int *xp, *yp;
+
+	switch(c)
+	{
+		case '1':
+			xp = x1;
+			yp = y1;
+			n = sizeof(x1)/sizeof(int);
+			break;
+		default:
+			// unknown character
+			break;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		xa[i] = xp[i]*s + x;
+		ya[i] = yp[i]*s + y;
+	}
+
+	draw_polygon(xa, ya, n);
+}
+
 void draw_state(int x, int y)
 {
 	gfx_clear();
+
+	draw_character(10, 10, 3, '1');
+	draw_character(33, 10, 3, '1');
 
 	gfx_color(255, 255, 0);
 	draw_circle(x, y, 50);
