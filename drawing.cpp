@@ -33,6 +33,8 @@ void draw_character(int x, int y, int s, char c)
 {
 	int x1[] = {2, 5, 5, 2, 8};
 	int y1[] = {2, 0, 9, 9, 9};
+	int x5[] = {8, 0, 0, 7, 8, 7, 0};
+	int y5[] = {0, 0, 4, 4, 6, 9, 9};
 
 	int xa[10], ya[10], n;
 	int *xp, *yp;
@@ -43,6 +45,11 @@ void draw_character(int x, int y, int s, char c)
 			xp = x1;
 			yp = y1;
 			n = sizeof(x1)/sizeof(int);
+			break;
+		case '5':
+			xp = x5;
+			yp = y5;
+			n = sizeof(x5)/sizeof(int);
 			break;
 		default:
 			// unknown character
@@ -62,7 +69,7 @@ void draw_state(int x, int y)
 	gfx_clear();
 
 	draw_character(10, 10, 3, '1');
-	draw_character(33, 10, 3, '1');
+	draw_character(33, 10, 3, '5');
 
 	gfx_color(255, 255, 0);
 	draw_circle(x, y, 50);
