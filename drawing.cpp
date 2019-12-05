@@ -64,12 +64,20 @@ void draw_character(int x, int y, int s, char c)
 	draw_polygon(xa, ya, n);
 }
 
+void draw_string(int x, int y, int s, const char *str)
+{
+	while (*str)
+	{
+		draw_character(x, y, s, *str++);
+		x += 11*s;
+	}
+}
+
 void draw_state(int x, int y)
 {
 	gfx_clear();
 
-	draw_character(10, 10, 3, '1');
-	draw_character(33, 10, 3, '5');
+	draw_string(10, 10, 3, "15");
 
 	gfx_color(255, 255, 0);
 	draw_circle(x, y, 50);
